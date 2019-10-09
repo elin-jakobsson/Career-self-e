@@ -1,0 +1,127 @@
+h1 {
+  font-size: 5rem;
+  font-weight: 500;
+}
+h2 {
+  font-size: 4rem;
+  font-weight: 500;
+}
+h3 {
+  font-size: 3rem;
+  font-weight: 500;
+}
+h4 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+hr {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  &.light {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.button {
+  border: 1px solid black;
+  color: black;
+  border-radius: 1rem;
+  padding: 1rem;
+  &:focus {
+    outline: 0;
+  }
+  &:hover {
+    opacity: 0.6;
+  }
+  &--white {
+    border-color: white;
+    color: white;
+  }
+  &--grey {
+    border-color: #999;
+    color: #999;
+    &--solid {
+      background-color: #ccc;
+      color: black;
+    }
+  }
+}
+button {
+  &:focus {
+    outline: 0;
+  }
+  &[disabled] {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+input {
+  height: 3rem;
+  border: 0;
+  padding: 0.5rem 1.5rem;
+  line-height: 2rem;
+  caret-color: rgba(0, 0, 0, 0.6);
+  &.round {
+    border-radius: 1.5rem;
+  }
+  &:focus {
+    outline: 0;
+  }
+}
+
+.form-input {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  margin: 3rem 0;
+  width: 100%;
+  & input {
+    border: 0;
+    width: 100%;
+    border-bottom: 2px solid #dbdbdb;
+    caret-color: rgba(0, 0, 0, 0.6);
+  }
+  & input.round {
+    border: none;
+    &:focus,
+    &:valid {
+      border: none;
+    }
+  }
+  & input:focus ~ label,
+  & input:valid ~ label {
+    transform: translate(0, -2.5rem);
+    color: #4040dd;
+    font-size: 1.2rem;
+  }
+
+  & input:focus,
+  & input:valid {
+    border-bottom: 2px solid #4040dd;
+  }
+
+  & label,
+  & span.note {
+    pointer-events: none;
+    position: absolute;
+    color: #999;
+    left: 1rem;
+  }
+
+  & label {
+    top: 0;
+    line-height: 3rem;
+    transform: translate(0, 0);
+    transition: 320ms transform linear;
+  }
+
+  & span.note {
+    top: 3.5rem;
+    font-size: 1.2rem;
+    &--error {
+      color: red;
+    }
+  }
+}

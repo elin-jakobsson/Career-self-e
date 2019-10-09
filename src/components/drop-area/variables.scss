@@ -1,0 +1,34 @@
+@import '../../styles/global-variables.scss';
+
+// Item
+$itemMargin: 0.5rem;
+$itemPadding: 0 0 0.5rem 0;
+$itemBorder: 1px solid rgba(0, 0, 0, 0.4);
+$itemBackgroundColor: white;
+$itemColor: rgba(0, 0, 0, 0.6);
+$itemSize: 7.3rem;
+$itemImageSize: $itemSize / 2;
+$itemDragPositionAdjustment: translate(#{-$itemSize / 2}, #{-$itemSize / 2});
+$itemDragPositionAdjustmentDragging: translate(#{-$itemSize / 2}, #{(-$itemSize / 2) - $topBarHeight});
+$itemBadgeSize: 3rem;
+$itemBadgeFontSize: 3rem;
+$itemBadgeBackgroundColor: rgba(255, 255, 255, 1);
+$itemBadgeColor: rgba(0, 0, 0, 0.5);
+
+// Graph
+$graphDropBorder: 4px solid rgba(216, 112, 147, 0.52);
+$graphLinePadding: 2rem;
+$graphLineWidth: 2px;
+$graphLineColor: rgba(0, 0, 0, 0.3);
+$graphLineLabelColor: $graphLineColor;
+$graphLineLabelFontSize: 1.6rem;
+$graphLineLabelPadding: 1rem;
+
+// Main
+$mainPadding: 2rem;
+
+// Sidebar
+$sidebarPadding: $itemMargin;
+$sidebarColumns: 3;
+$sidebarWidth: ($sidebarPadding * 2) + ($itemSize * $sidebarColumns) +
+  ($sidebarColumns * 2 * $itemMargin);

@@ -1,17 +1,32 @@
 <template>
   <div class="team-stats">
-    <sidebar />
+    <sidebar>
+      <template v-slot:header>
+        <div class="team-stats__sidebar__header">
+          <div
+            class="team-stats__sidebar__header--team-image"
+            :style="{
+          background: `url(${
+            !!teamImage ? teamImage : 'default-user-2.png'
+          })center center / cover no-repeat, url(default-user-2.png )`,
+        }"
+          ></div>
+          <h4>Team name</h4>
+        </div>
+      </template>
+
+      <div class="team-stats__sidebar__channels">
+        <p>#channels</p>
+        <hr class="light" />
+      </div>
+      <template v-slot:sidebar__scroll-list>
+        <team-label v-for="n in 3" :key="n" />
+      </template>
+    </sidebar>
+
     <div class="team-stats__main">
-      <div
-        class="team-stats__main__row"
-        v-for="(stats, index) in teamStats"
-        v-bind:key="index"
-      >
-        <top-rating
-          :items="stats.interestItems"
-          :isInterest="true"
-          :categoryName="stats.category"
-        />
+      <div class="team-stats__main__row" v-for="(stats, index) in teamStats" v-bind:key="index">
+        <top-rating :items="stats.interestItems" :isInterest="true" :categoryName="stats.category" />
         <top-rating
           :items="stats.experienceItems"
           :isInterest="false"
@@ -27,6 +42,8 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import Sidebar from '../components/Sidebar.vue';
 import TopRating from '../components/TopRating.vue';
 import { firestore } from 'firebase';
+import TeamLabel from '../components/TeamLabel.vue';
+
 import { groupObjectArray } from '../utils';
 import { GraphItem } from '../models';
 
@@ -48,13 +65,16 @@ interface TeamStats {
 }
 
 @Component({
-  components: { Sidebar, TopRating },
+  components: { Sidebar, TopRating, TeamLabel },
 })
 export default class extends Vue {
   public topInterest: GraphItem[] = [];
   public topExperience: GraphItem[] = [];
 
   public teamStats: TeamStats[] = [];
+
+  public teamImage: string =
+    'https://miro.medium.com/max/3200/0*QUqE4WGF8_cC9bIl.jpg';
 
   async mounted() {
     try {
@@ -131,6 +151,30 @@ export default class extends Vue {
       display: flex;
       & > * {
         margin: 1rem;
+      }
+    }
+  }
+
+  &__sidebar {
+    &__channels {
+      padding: 2rem;
+      color: #f4f4f4;
+      & p {
+        margin-bottom: 0.5rem;
+      }
+    }
+    &__header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #f4f4f4;
+      justify-content: center;
+      &--team-image {
+        border-radius: 50%;
+        box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.4);
+        height: 8rem;
+        width: 8rem;
+        margin-bottom: 1rem;
       }
     }
   }

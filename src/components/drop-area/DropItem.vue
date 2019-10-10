@@ -49,7 +49,7 @@ export default class extends Vue {
   user-select: none;
   height: $itemSize;
   width: $itemSize;
-  margin: $itemMargin;
+  // margin: $itemMargin;
   background-color: $itemBackgroundColor;
   border-radius: 1rem;
   border: $itemBorder;

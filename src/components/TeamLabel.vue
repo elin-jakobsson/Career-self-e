@@ -1,7 +1,7 @@
 <template>
-  <div class="user-label">
+  <div class="team-label">
     <div
-      class="user-label__userImg"
+      class="team-label__team-image"
       :style="{
         background: 'url(' + userImage + ' )',
         backgroundPosition: 'center',
@@ -9,8 +9,8 @@
         backgroundRepeat: 'no-repeat',
       }"
     ></div>
-    <p class="user-label__userName">{{ userName }}</p>
-    <p class="user-label__icon">&#10095;</p>
+    <p class="team-label__team-name">{{ userName }}</p>
+    <p class="team-label__icon">&#10095;</p>
   </div>
 </template>
 
@@ -35,14 +35,15 @@ export default class extends Vue {
 </script>
 
 <style lang="scss" scoped>
-$imageSize: 4.5rem;
-.user-label {
-  margin: 2rem 1rem;
-  background-color: #1c1b27;
+$imageSize: 3.5rem;
+.team-label {
+  margin: 1rem 0rem;
+  background-color: #414141;
   display: flex;
   align-items: center;
   border-radius: $imageSize;
   cursor: pointer;
+  padding: 1px;
 
   -o-transition: 0.5s;
   -ms-transition: 0.5s;
@@ -50,12 +51,16 @@ $imageSize: 4.5rem;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 
-  &__userImg {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &__team-image {
     width: $imageSize;
     height: $imageSize;
     border-radius: 60%;
   }
-  &__userName {
+  &__team-name {
     color: #fff;
     font-size: 1.6rem;
     margin-left: 1rem;
@@ -64,7 +69,7 @@ $imageSize: 4.5rem;
     flex: 1;
     text-align: right;
     padding-right: 1rem;
-    color: #c0c0c0;
+    color: #2b2b2b;
     font-size: 1.6rem;
   }
 
@@ -72,7 +77,7 @@ $imageSize: 4.5rem;
     background-color: #000;
   }
   &:hover &__icon {
-    color: #fff;
+    color: #6d6d6d;
   }
 }
 </style>

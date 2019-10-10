@@ -10,18 +10,14 @@
           backgroundRepeat: 'no-repeat',
         }"
       ></div>
-      <div class="sidebar-header__title">
-        FRONTEND GROUP
-      </div>
+      <div class="sidebar-header__title">FRONTEND GROUP</div>
       <hr class="sidebar-header__title-divider light" />
     </div>
     <div class="sidebar__search sidebar-search">
       <input class="sidebar-search__input-field" />
     </div>
     <div class="sidebar__main sidebar-main">
-      <div class="sidebar-main__team-members-title">
-        Team members
-      </div>
+      <div class="sidebar-main__team-members-title">Team members</div>
       <hr class="sidebar-main__team-members-divider light" />
       <team-member />
     </div>
@@ -30,12 +26,12 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import UserLabel from '../components/UserLabel.vue';
+import TeamLabel from '../components/TeamLabel.vue';
 import TeamMember from '../components/TeamMember.vue';
 
 @Component({
   components: {
-    UserLabel,
+    TeamLabel,
     TeamMember,
   },
 })

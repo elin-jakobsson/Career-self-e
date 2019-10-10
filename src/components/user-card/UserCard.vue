@@ -33,12 +33,15 @@ export default class extends Vue {
 
 <style lang="scss" scoped>
 .user-card {
-  width: 25rem;
+  align-self: center;
+  // width: 25rem;
+  width: 100%;
   // min-width: 25rem;
   // max-width: 28rem;
   // flex: 1;
   height: 38rem;
-  margin: 1rem;
+
+  // margin: 1rem;
   perspective: 1300px;
   cursor: pointer;
 

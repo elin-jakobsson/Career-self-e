@@ -3,47 +3,68 @@
     <sidebar>
       <template v-slot:header>
         <div class="drop-area__sidebar__header">
-          <button
-            class="button button--white drop-area__sidebar__header__category"
-            @click="$emit('selectCategory')"
-          >
-            {{ selectedCategoryName || 'Select category' }}
-          </button>
+          <div
+            class="drop-area__sidebar__header--team-image"
+            :style="{
+          background: `url(${
+            !!teamImage ? teamImage : 'default-user-2.png'
+          })center center / cover no-repeat, url(default-user-2.png )`,
+        }"
+          ></div>
+          <h4>Team name</h4>
+        </div>
+      </template>
+      <template v-slot:buttons>
+        <div class="drop-area__sidebar__controlls">
           <input
-            class="round drop-area__sidebar__header__search"
+            class="round drop-area__sidebar__controlls__search"
             type="text"
             v-model="searchText"
             placeholder="Search"
           />
+          <!--<button
+            class="button button--white drop-area__sidebar__controlls__category"
+            @click="$emit('selectCategory')"
+          >{{ selectedCategoryName || 'Select category' }}</button>
+          <button
+            class="button button--white drop-area__sidebar__main__new"
+            @click="$emit('addNewItem')"
+          >+ Add new item</button>-->
+          <button
+            class="drop-area__sidebar__controlls--button"
+            @click="$emit('selectCategory')"
+          >{{ selectedCategoryName || 'Select category' }}</button>
+          <button
+            class="drop-area__sidebar__controlls--button"
+            @click="$emit('addNewItem')"
+          >+ Add new item</button>
+
+          <hr class="light" />
         </div>
       </template>
-      <div class="drop-area__sidebar__main">
-        <button
-          class="button button--white drop-area__sidebar__main__new"
-          @click="$emit('addNewItem')"
-        >
-          + Add new item
-        </button>
-        <div class="drop-area__sidebar__main__icons">
-          <drop-item
+      <div class="drop-area__sidebar__main"></div>
+      <template v-slot:sidebar__scroll-list>
+        <div class="drop-area__sidebar__scroll-list__icons">
+          <div
             v-for="(item, index) in filteredSidebarItems"
             v-bind:key="index"
-            :item="item"
-            :dimmed="isItemOnGraph(item)"
-            @mousedown.native="
+            class="drop-area__sidebar__scroll-list__icons--section"
+          >
+            <drop-item
+              :item="item"
+              :dimmed="isItemOnGraph(item)"
+              @mousedown.native="
               isItemOnGraph(item) ? () => {} : startDragging(item)
             "
-          />
+            />
+          </div>
         </div>
-      </div>
+      </template>
     </sidebar>
     <div class="drop-area__main" ref="dropAreaMain">
       <div class="drop-area__main__padding" :style="graphMaxWidth">
         <div class="drop-area__main__square-wrapper">
-          <div
-            class="drop-area__main__square-wrapper__container"
-            ref="graphContainer"
-          >
+          <div class="drop-area__main__square-wrapper__container" ref="graphContainer">
             <drop-graph
               :graphItems="graphItems"
               :graphCorners="graphCorners"
@@ -108,6 +129,9 @@ export default class extends Vue {
 
   @Prop({ default: '' })
   public selectedCategoryName!: string;
+
+  public teamImage: string =
+    'https://miro.medium.com/max/3200/0*QUqE4WGF8_cC9bIl.jpg';
 
   public mousePosition: Coord = new Coord();
   public graphCorners: ElementCorners = new ElementCorners();
@@ -233,17 +257,67 @@ export default class extends Vue {
   display: flex;
   &__sidebar {
     &__main {
+      // padding: 2rem;
+    }
+    &__scroll-list {
       &__icons {
-        margin: -0.5rem;
-        margin-top: 1rem;
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        grid-gap: 1.5rem;
+
+        &--section {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
+
     &__header {
+      display: flex;
+      align-items: center;
+      color: #f4f4f4;
+
+      &--team-image {
+        border-radius: 50%;
+        box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.4);
+        height: 5rem;
+        width: 5rem;
+        margin-right: 2rem;
+      }
+    }
+
+    &__controlls {
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
       &__search {
         margin-top: 2rem;
+        margin-bottom: 1rem;
         width: 100%;
+      }
+      &--button {
+        background-color: #444444;
+        color: #f4f4f4;
+        padding: 0.6rem 1rem;
+        border-radius: 5rem;
+        border: rgba(244, 244, 244, 0.6) solid 1px;
+
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+
+        -o-transition: 0.5s;
+        -ms-transition: 0.5s;
+        -moz-transition: 0.5s;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+
+        &:hover {
+          background-color: #0c6e09;
+          font-weight: bold;
+        }
       }
     }
   }

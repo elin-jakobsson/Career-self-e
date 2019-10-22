@@ -58,7 +58,9 @@
           alignment-baseline="central"
           text-anchor="middle"
           :font-size="chartDiamterSize >= 100 ? '1.8rem' : '1.2rem'"
-        >{{ Math.floor(percentInput * 100) }}%</text>
+        >
+          {{ Math.floor(percentInput * 100) }}%
+        </text>
         <!-- <text
           v-if="chartDiamterSize >= 100"
           class="circle-chart__subline"

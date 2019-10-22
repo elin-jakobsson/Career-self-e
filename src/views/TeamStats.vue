@@ -6,10 +6,10 @@
           <div
             class="team-stats__sidebar__header--team-image"
             :style="{
-          background: `url(${
-            !!teamImage ? teamImage : 'default-user-2.png'
-          })center center / cover no-repeat, url(default-user-2.png )`,
-        }"
+              background: `url(${
+                !!teamImage ? teamImage : 'default-user-2.png'
+              })center center / cover no-repeat, url(default-user-2.png )`,
+            }"
           ></div>
           <h4>Team name</h4>
         </div>
@@ -25,8 +25,16 @@
     </sidebar>
 
     <div class="team-stats__main">
-      <div class="team-stats__main__row" v-for="(stats, index) in teamStats" v-bind:key="index">
-        <top-rating :items="stats.interestItems" :isInterest="true" :categoryName="stats.category" />
+      <div
+        class="team-stats__main__row"
+        v-for="(stats, index) in teamStats"
+        v-bind:key="index"
+      >
+        <top-rating
+          :items="stats.interestItems"
+          :isInterest="true"
+          :categoryName="stats.category"
+        />
         <top-rating
           :items="stats.experienceItems"
           :isInterest="false"

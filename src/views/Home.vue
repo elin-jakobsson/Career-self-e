@@ -7,10 +7,10 @@
           <div
             class="home__sidebar__header--team-image"
             :style="{
-          background: `url(${
-            !!teamImage ? teamImage : 'default-user-2.png'
-          })center center / cover no-repeat, url(default-user-2.png )`,
-        }"
+              background: `url(${
+                !!teamImage ? teamImage : 'default-user-2.png'
+              })center center / cover no-repeat, url(default-user-2.png )`,
+            }"
           ></div>
           <h4>Team name</h4>
         </div>

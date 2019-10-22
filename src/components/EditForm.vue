@@ -62,7 +62,9 @@
       </div>
       <div class="edit-form--button-container">
         <!-- <button class="edit-form--button-container_clear" >Clear all</button> -->
-        <button type="submit" class="edit-form--button-container_save">Submit</button>
+        <button type="submit" class="edit-form--button-container_save">
+          Submit
+        </button>
       </div>
     </form>
   </div>

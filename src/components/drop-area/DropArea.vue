@@ -6,10 +6,10 @@
           <div
             class="drop-area__sidebar__header--team-image"
             :style="{
-          background: `url(${
-            !!teamImage ? teamImage : 'default-user-2.png'
-          })center center / cover no-repeat, url(default-user-2.png )`,
-        }"
+              background: `url(${
+                !!teamImage ? teamImage : 'default-user-2.png'
+              })center center / cover no-repeat, url(default-user-2.png )`,
+            }"
           ></div>
           <h4>Team name</h4>
         </div>
@@ -33,11 +33,15 @@
           <button
             class="drop-area__sidebar__controlls--button"
             @click="$emit('selectCategory')"
-          >{{ selectedCategoryName || 'Select category' }}</button>
+          >
+            {{ selectedCategoryName || 'Select category' }}
+          </button>
           <button
             class="drop-area__sidebar__controlls--button"
             @click="$emit('addNewItem')"
-          >+ Add new item</button>
+          >
+            + Add new item
+          </button>
 
           <hr class="light" />
         </div>
@@ -54,8 +58,8 @@
               :item="item"
               :dimmed="isItemOnGraph(item)"
               @mousedown.native="
-              isItemOnGraph(item) ? () => {} : startDragging(item)
-            "
+                isItemOnGraph(item) ? () => {} : startDragging(item)
+              "
             />
           </div>
         </div>
@@ -64,7 +68,10 @@
     <div class="drop-area__main" ref="dropAreaMain">
       <div class="drop-area__main__padding" :style="graphMaxWidth">
         <div class="drop-area__main__square-wrapper">
-          <div class="drop-area__main__square-wrapper__container" ref="graphContainer">
+          <div
+            class="drop-area__main__square-wrapper__container"
+            ref="graphContainer"
+          >
             <drop-graph
               :graphItems="graphItems"
               :graphCorners="graphCorners"

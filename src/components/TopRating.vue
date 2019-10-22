@@ -24,10 +24,17 @@
       </div>
       <h4>{{ topOne.name }}</h4>
     </div>
-    <div v-for="(item, index) in theRest" v-bind:key="index" class="top-rating__rating">
+    <div
+      v-for="(item, index) in theRest"
+      v-bind:key="index"
+      class="top-rating__rating"
+    >
       <div class="top-rating__rating__circle">
         <!-- <span>{{ getItemValue(item) }}</span> -->
-        <pie-chart :percentInput="Number(getItemValue(item)) * 0.1" chartDiamterSize="50" />
+        <pie-chart
+          :percentInput="Number(getItemValue(item)) * 0.1"
+          chartDiamterSize="50"
+        />
       </div>
       <div class="top-rating__rating__name">
         <img :src="getImgUrl(item)" />

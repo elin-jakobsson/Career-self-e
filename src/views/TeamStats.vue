@@ -90,7 +90,7 @@ export default class extends Vue {
               const meanValueItems = getMeanValueOfItems(
                 this.snapAsItemArr(snap),
               );
-              console.log('snap ', meanValueItems);
+              // console.log('snap ', meanValueItems);
 
               const interestItems = [...meanValueItems].sort(
                 this.sortByCoord('y'),

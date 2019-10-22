@@ -58,9 +58,7 @@
           alignment-baseline="central"
           text-anchor="middle"
           :font-size="chartDiamterSize >= 100 ? '1.8rem' : '1.2rem'"
-        >
-          {{ Math.floor(percentInput * 100) }}%
-        </text>
+        >{{ Math.floor(percentInput * 100) }}%</text>
         <!-- <text
           v-if="chartDiamterSize >= 100"
           class="circle-chart__subline"
@@ -87,10 +85,6 @@ export default class extends Vue {
   public circelChartColor = 'blue';
   // public percentInput = 0.333;
   // public diameter: number = 100;
-
-  mounted() {
-    console.log(this.percentInput);
-  }
 
   get circumference(): number {
     return this.chartDiamterSize * Math.PI;

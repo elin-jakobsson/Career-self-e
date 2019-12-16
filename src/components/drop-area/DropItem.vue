@@ -78,7 +78,7 @@ export default class extends Vue {
   }
   &--dimmed {
     cursor: default;
-    opacity: 0.7;
+    opacity: 0.4;
     &:hover {
       opacity: 0.7;
     }

@@ -1,6 +1,6 @@
 <template>
   <div class="drop-area">
-    <sidebar>
+    <drop-item-sidebar>
       <template v-slot:header>
         <div class="drop-area__sidebar__header">
           <div
@@ -11,11 +11,15 @@
               })center center / cover no-repeat, url(default-user-2.png )`,
             }"
           ></div>
-          <h4>Team name</h4>
+          <div class="drop-area__sidebar__header--text-box">
+            <h4>Team name</h4>
+            <p>Selfevaluation</p>
+          </div>
         </div>
       </template>
       <template v-slot:buttons>
         <div class="drop-area__sidebar__controlls">
+          <search-controller />
           <input
             class="round drop-area__sidebar__controlls__search"
             type="text"
@@ -33,21 +37,17 @@
           <button
             class="drop-area__sidebar__controlls--button"
             @click="$emit('selectCategory')"
-          >
-            {{ selectedCategoryName || 'Select category' }}
-          </button>
+          >{{ selectedCategoryName || 'Select category' }}</button>
           <button
             class="drop-area__sidebar__controlls--button"
             @click="$emit('addNewItem')"
-          >
-            + Add new item
-          </button>
+          >+ Add new item</button>
 
-          <hr class="light" />
+          <hr />
         </div>
       </template>
       <div class="drop-area__sidebar__main"></div>
-      <template v-slot:sidebar__scroll-list>
+      <template v-slot:drop-item-sidebar__scroll-list>
         <div class="drop-area__sidebar__scroll-list__icons">
           <div
             v-for="(item, index) in filteredSidebarItems"
@@ -64,14 +64,11 @@
           </div>
         </div>
       </template>
-    </sidebar>
+    </drop-item-sidebar>
     <div class="drop-area__main" ref="dropAreaMain">
       <div class="drop-area__main__padding" :style="graphMaxWidth">
         <div class="drop-area__main__square-wrapper">
-          <div
-            class="drop-area__main__square-wrapper__container"
-            ref="graphContainer"
-          >
+          <div class="drop-area__main__square-wrapper__container" ref="graphContainer">
             <drop-graph
               :graphItems="graphItems"
               :graphCorners="graphCorners"
@@ -116,15 +113,17 @@ import {
 } from './helpers';
 import { Item, GraphItem, Coord, ElementCorners } from '../../models';
 import { capitalizeFirstLetter } from '../../utils';
-import Sidebar from '../../components/Sidebar.vue';
+import DropItemSidebar from '../../components/DropItemSidebar.vue';
 import DetailsCard from '../../components/DetailsCard.vue';
+import SearchController from '../../components/SearchController.vue';
 
 @Component({
   components: {
     DropItem,
     DropGraph,
-    Sidebar,
+    DropItemSidebar,
     DetailsCard,
+    SearchController,
   },
 })
 export default class extends Vue {
@@ -263,9 +262,6 @@ export default class extends Vue {
 .drop-area {
   display: flex;
   &__sidebar {
-    &__main {
-      // padding: 2rem;
-    }
     &__scroll-list {
       &__icons {
         display: grid;
@@ -284,7 +280,7 @@ export default class extends Vue {
     &__header {
       display: flex;
       align-items: center;
-      color: #f4f4f4;
+      color: #333333;
 
       &--team-image {
         border-radius: 50%;
@@ -292,6 +288,13 @@ export default class extends Vue {
         height: 5rem;
         width: 5rem;
         margin-right: 2rem;
+      }
+
+      &--text-box {
+        & p {
+          font-style: italic;
+          margin-top: 0.5rem;
+        }
       }
     }
 
@@ -322,8 +325,7 @@ export default class extends Vue {
         transition: 0.5s;
 
         &:hover {
-          background-color: #0c6e09;
-          font-weight: bold;
+          background-color: #242424;
         }
       }
     }

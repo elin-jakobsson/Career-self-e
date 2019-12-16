@@ -37,11 +37,15 @@
           <button
             class="drop-area__sidebar__controlls--button"
             @click="$emit('selectCategory')"
-          >{{ selectedCategoryName || 'Select category' }}</button>
+          >
+            {{ selectedCategoryName || 'Select category' }}
+          </button>
           <button
             class="drop-area__sidebar__controlls--button"
             @click="$emit('addNewItem')"
-          >+ Add new item</button>
+          >
+            + Add new item
+          </button>
 
           <hr />
         </div>
@@ -68,7 +72,10 @@
     <div class="drop-area__main" ref="dropAreaMain">
       <div class="drop-area__main__padding" :style="graphMaxWidth">
         <div class="drop-area__main__square-wrapper">
-          <div class="drop-area__main__square-wrapper__container" ref="graphContainer">
+          <div
+            class="drop-area__main__square-wrapper__container"
+            ref="graphContainer"
+          >
             <drop-graph
               :graphItems="graphItems"
               :graphCorners="graphCorners"

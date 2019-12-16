@@ -1,6 +1,11 @@
 <template>
   <div class="search-controller">
-    <input class="search-controller--input" type="text" v-model="searchText" placeholder="Search" />
+    <input
+      class="search-controller--input"
+      type="text"
+      v-model="searchText"
+      placeholder="Search"
+    />
     <i class="fa fa-search"></i>
   </div>
 </template>
@@ -11,7 +16,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class extends Vue {}
 </script>
-
 
 <style scoped lang="scss">
 .search-controller {
